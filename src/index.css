@@ -83,7 +83,7 @@ button {
 .auth-heading {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  font-size: clamp(24px, 2.5vw, 34px);
+  font-size: 40px; /* Locked to 40px per user request */
   line-height: 1.25;
   letter-spacing: -0.4px;
   color: #111827;
@@ -95,8 +95,8 @@ button {
 .auth-description {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 15px;
-  line-height: 22px;
+  font-size: 16px; /* Adjusted to 16px per user request */
+  line-height: 24px;
   letter-spacing: 0;
   color: #6B7280;
   text-align: center;

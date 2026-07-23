@@ -179,30 +179,30 @@ const PromoPanel = () => {
 
           {/* ── 6. Floating Icon Badges (Positioned perfectly on the outer circle's edge) ── */}
           <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 6 }}>
-            {/* Shield Badge: Top-left circumference edge (315°) */}
+            {/* Shield Badge: Top-left circumference edge (315°) - Adjusted for 110px width */}
             <FloatingIcon
               icon="shield"
               style={{
-                top: '273px',
-                left: '263px',
+                top: '260px',
+                left: '250px',
               }}
             />
 
-            {/* Analytics Badge: Middle-left horizontal edge (180°) */}
+            {/* Analytics Badge: Middle-left horizontal edge (180°) - Adjusted for 110px width */}
             <FloatingIcon
               icon="analytics"
               style={{
-                top: '478px',
-                left: '178px',
+                top: '465px',
+                left: '165px',
               }}
             />
 
-            {/* Calendar Badge: Bottom-left circumference edge (225°) */}
+            {/* Calendar Badge: Bottom-left circumference edge (225°) - Adjusted for 110px width */}
             <FloatingIcon
               icon="calendar"
               style={{
-                top: '683px',
-                left: '263px',
+                top: '670px',
+                left: '250px',
               }}
             />
           </div>
@@ -221,8 +221,8 @@ const PromoPanel = () => {
               style={{
                 fontFamily: 'Poppins, sans-serif',
                 fontWeight: 600,
-                fontSize: '52px',
-                lineHeight: '60px',
+                fontSize: '48px', // Adjusted to 48px
+                lineHeight: '56px',
                 color: '#ffffff',
                 margin: 0,
               }}
@@ -235,9 +235,9 @@ const PromoPanel = () => {
               style={{
                 fontFamily: 'Poppins, sans-serif',
                 fontWeight: 400,
-                fontSize: '19px',
+                fontSize: '20px', // Adjusted to 20px
                 color: 'rgba(255,255,255,0.85)',
-                maxWidth: '360px',
+                maxWidth: '380px',
                 marginTop: '16px',
                 marginBottom: 0,
                 lineHeight: '28px',

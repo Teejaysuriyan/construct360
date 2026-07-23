@@ -60,7 +60,7 @@ const AuthFooter = () => (
       >
         Privacy Policy
       </a>
-      .
+      . this content
     </p>
   </div>
 );
