@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden !important;
+  background: #ffffff;
+}
+
+input::placeholder {
+  color: #9CA3AF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+}
+
+input:focus {
+  outline: none;
+}
+
+button {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ════════════════════════════════════════════════════════════
+   RESPONSIVE WRAPPER & GRID CONTAINER
+   ════════════════════════════════════════════════════════════ */
+
+.auth-wrapper {
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 1540px;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(24px, 3.5vw, 72px);
+  align-items: center;
+  padding-inline: 24px;
+  padding-block: 24px;
+}
+
+/* ── Left Column (Form) ── */
+.auth-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.auth-content {
+  width: 100%;
+  max-width: 430px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: clamp(24px, 2.5vw, 34px);
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+  color: #111827;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.auth-description {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  letter-spacing: 0;
+  color: #6B7280;
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 24px;
+}
+
+/* ── Right Column (Promo Panel) ── */
+.auth-right {
+  width: auto;
+  height: 100%;
+  max-height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  justify-self: end;
+  overflow: hidden;
+}
+
+/* ════════════════════════════════════════════════════════════
+   UP-SCALING FOR LARGE & ULTRA-WIDE DISPLAYS
+   ════════════════════════════════════════════════════════════ */
+
+/* Large screens (e.g. 1080p desktop at 100% zoom): Scale up by 25% to match browser zoom look natively */
+@media (min-width: 1600px) {
+  .auth-container {
+    max-width: 1920px;
+    width: 80%;
+    height: 80%;
+    transform: scale(1.25);
+    transform-origin: center;
+  }
+}
+
+/* Ultra-wide screens (e.g. 1440p / 4K desktops): Scale up by 40% to maintain balanced compact layout */
+@media (min-width: 2000px) {
+  .auth-container {
+    max-width: 2400px;
+    width: 71.4%;
+    height: 71.4%;
+    transform: scale(1.4);
+    transform-origin: center;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   DOWN-SCALING BREAKPOINTS
+   ════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1439px) and (min-width: 1200px) {
+  .auth-container {
+    gap: clamp(20px, 2.5vw, 40px);
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+  .auth-container {
+    grid-template-columns: minmax(380px, 45%) 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+  .auth-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .auth-heading {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 767px) {
+  .auth-wrapper {
+    padding: 16px;
+  }
+  .auth-container {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .auth-right {
+    display: none !important;
+  }
+  .auth-heading {
+    font-size: clamp(24px, 6vw, 30px);
+    line-height: 1.25;
+    white-space: normal;
+  }
+}
