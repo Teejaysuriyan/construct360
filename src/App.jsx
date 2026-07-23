@@ -4,10 +4,10 @@ function App() {
   return (
     <div
       style={{
+        height: '100%',
         minHeight: '100vh',
         width: '100%',
         display: 'flex',
-        alignItems: 'flex-start',
         justifyContent: 'center',
         backgroundColor: '#ffffff',
         overflowX: 'auto',

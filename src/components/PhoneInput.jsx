@@ -67,6 +67,22 @@ export const UKFlag = () => (
   </svg>
 );
 
+// Warning Error Info Icon SVG (16x16px)
+export const ErrorIcon = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{ marginRight: '6px', flexShrink: 0 }}
+  >
+    <circle cx="8" cy="8" r="7" stroke="#DC2626" strokeWidth="1.2" />
+    <path d="M8 4.5V9" stroke="#DC2626" strokeWidth="1.2" strokeLinecap="round" />
+    <circle cx="8" cy="11.5" r="0.8" fill="#DC2626" />
+  </svg>
+);
+
 // List of supported country profiles for dialing selection
 export const COUNTRIES = [
   { code: '+91', name: 'India', flag: IndiaFlag, length: 10, placeholder: 'Enter mobile number' },
@@ -82,8 +98,9 @@ export const COUNTRIES = [
  * - A click-to-open country code selection dropdown with flag graphics.
  * - An input box that strictly restricts input values to digits only (0-9).
  * - Focus-triggered border outlines and shadows for polished UX.
+ * - An inline red error validation message displaying if number length is incomplete.
  */
-const PhoneInput = ({ value, onChange, selectedCountry, onCountryChange }) => {
+const PhoneInput = ({ value, onChange, selectedCountry, onCountryChange, submitError, onSubmit }) => {
   const [focused, setFocused] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -101,10 +118,12 @@ const PhoneInput = ({ value, onChange, selectedCountry, onCountryChange }) => {
 
   const ActiveFlag = selectedCountry.flag;
 
-  // Sanitizer: strip all non-numeric characters on change event
+  // Sanitizer: strip all non-numeric characters and enforce maximum digit length
   const handleInputChange = (e) => {
     const cleanVal = e.target.value.replace(/\D/g, '');
-    onChange(cleanVal);
+    if (cleanVal.length <= selectedCountry.length) {
+      onChange(cleanVal);
+    }
   };
 
   return (
@@ -136,13 +155,21 @@ const PhoneInput = ({ value, onChange, selectedCountry, onCountryChange }) => {
           alignItems: 'center',
           width: '100%',
           maxWidth: '430px',
-          height: '48px', // Adjusted to 48px
-          border: focused ? '1.5px solid #2563EB' : '1px solid #D1D5DB',
+          height: '48px',
+          border: submitError
+            ? '1.5px solid #DC2626'
+            : focused
+            ? '1.5px solid #2563EB'
+            : '1px solid #D1D5DB',
           borderRadius: '8px',
           backgroundColor: '#ffffff',
           paddingLeft: '14px',
           paddingRight: '14px',
-          boxShadow: focused ? '0 0 0 3px rgba(37,99,235,0.08)' : 'none',
+          boxShadow: submitError
+            ? '0 0 0 3px rgba(220,38,38,0.08)'
+            : focused
+            ? '0 0 0 3px rgba(37,99,235,0.08)'
+            : 'none',
           transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
           position: 'relative',
         }}
@@ -165,7 +192,7 @@ const PhoneInput = ({ value, onChange, selectedCountry, onCountryChange }) => {
             style={{
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 400,
-              fontSize: '15px', // Balanced for 48px height
+              fontSize: '15px',
               color: '#111827',
               marginLeft: '8px',
               whiteSpace: 'nowrap',
@@ -183,7 +210,7 @@ const PhoneInput = ({ value, onChange, selectedCountry, onCountryChange }) => {
             <div
               style={{
                 position: 'absolute',
-                top: '52px', // Balanced for 48px height
+                top: '52px',
                 left: 0,
                 backgroundColor: '#ffffff',
                 border: '1px solid #E5E7EB',
@@ -249,12 +276,18 @@ const PhoneInput = ({ value, onChange, selectedCountry, onCountryChange }) => {
           type="tel"
           value={value}
           onChange={handleInputChange}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && onSubmit) {
+              e.preventDefault();
+              onSubmit();
+            }
+          }}
           placeholder={selectedCountry.placeholder}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           style={{
             fontFamily: 'Poppins, sans-serif',
-            fontSize: '15px', // Balanced for 48px height
+            fontSize: '15px',
             color: '#111827',
             border: 'none',
             outline: 'none',
@@ -265,6 +298,27 @@ const PhoneInput = ({ value, onChange, selectedCountry, onCountryChange }) => {
           }}
         />
       </div>
+
+      {/* ── Error Hint Text — only shown when parent sets submitError ── */}
+      {submitError && (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            alignSelf: 'flex-start',
+            width: '100%',
+            maxWidth: '430px',
+            marginTop: '8px',
+            color: '#DC2626',
+            fontFamily: 'Poppins, sans-serif',
+            fontSize: '14px',
+            fontWeight: 400,
+          }}
+        >
+          <ErrorIcon />
+          <span>{submitError}</span>
+        </div>
+      )}
     </div>
   );
 };

@@ -47,22 +47,6 @@ const PromoPanel = () => {
     <div
       ref={wrapperRef}
       className="promo-panel-container"
-      style={{
-        width: '100%',
-        maxWidth: '700px', // Slightly increased width from 670px per request
-        height: '100%',
-        maxHeight: '100%',
-        aspectRatio: '700 / 940',
-        borderRadius: '24px',
-        overflow: 'hidden',
-        position: 'relative',
-        marginLeft: 'auto',
-        marginRight: 0,
-        flexShrink: 0,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
     >
       {/* 
         This is the inner scaled canvas block.
@@ -116,12 +100,12 @@ const PromoPanel = () => {
           <div
             style={{
               position: 'absolute',
-              width: '740px',
-              height: '740px',
+              width: '816px',
+              height: '830px',
               borderRadius: '50%',
               background: 'linear-gradient(135deg, #0D3DBB 0%, #144AD9 100%)',
-              top: '-180px',
-              left: '-30px',
+              top: '-200px',
+              left: '-50px',
               pointerEvents: 'none',
               zIndex: 1,
             }}
@@ -211,7 +195,7 @@ const PromoPanel = () => {
           <div
             style={{
               position: 'absolute',
-              top: '48px',
+              top: '32px',
               left: '48px',
               maxWidth: '520px',
               zIndex: 10,
