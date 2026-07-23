@@ -132,6 +132,13 @@ button {
     transform: scale(1.25);
     transform-origin: center;
   }
+  /* Scale down font sizes so their visual size after 1.25x scale is exactly 40px and 16px */
+  .auth-heading {
+    font-size: 32px !important; /* 32px * 1.25 = 40px visual size */
+  }
+  .auth-description {
+    font-size: 12.8px !important; /* 12.8px * 1.25 = 16px visual size */
+  }
 }
 
 /* Ultra-wide screens (e.g. 1440p / 4K desktops): Scale up by 40% to maintain balanced compact layout */
@@ -142,6 +149,13 @@ button {
     height: 71.4%;
     transform: scale(1.4);
     transform-origin: center;
+  }
+  /* Scale down font sizes so their visual size after 1.4x scale is exactly 40px and 16px */
+  .auth-heading {
+    font-size: 28.5px !important; /* 28.5px * 1.4 = 40px visual size */
+  }
+  .auth-description {
+    font-size: 11.4px !important; /* 11.4px * 1.4 = 16px visual size */
   }
 }
 
