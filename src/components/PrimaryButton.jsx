@@ -16,13 +16,13 @@ const PrimaryButton = ({ children = 'Send OTP', onClick, disabled = true }) => (
     style={{
       width: '100%',
       maxWidth: '430px',
-      height: '52px',
+      height: '48px', // Adjusted to 48px
       borderRadius: '8px',
       backgroundColor: disabled ? '#E5E7EB' : '#2563EB',
       color: disabled ? '#9CA3AF' : '#ffffff',
       fontFamily: 'Poppins, sans-serif',
       fontWeight: 600,
-      fontSize: '15px',
+      fontSize: '15px', // Balanced for 48px height
       border: 'none',
       cursor: disabled ? 'not-allowed' : 'pointer',
       boxShadow: disabled ? 'none' : '0 4px 12px rgba(37,99,235,0.2)',

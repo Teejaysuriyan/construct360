@@ -136,7 +136,7 @@ const PhoneInput = ({ value, onChange, selectedCountry, onCountryChange }) => {
           alignItems: 'center',
           width: '100%',
           maxWidth: '430px',
-          height: '52px',
+          height: '48px', // Adjusted to 48px
           border: focused ? '1.5px solid #2563EB' : '1px solid #D1D5DB',
           borderRadius: '8px',
           backgroundColor: '#ffffff',
@@ -165,7 +165,7 @@ const PhoneInput = ({ value, onChange, selectedCountry, onCountryChange }) => {
             style={{
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 400,
-              fontSize: '15px',
+              fontSize: '15px', // Balanced for 48px height
               color: '#111827',
               marginLeft: '8px',
               whiteSpace: 'nowrap',
@@ -183,7 +183,7 @@ const PhoneInput = ({ value, onChange, selectedCountry, onCountryChange }) => {
             <div
               style={{
                 position: 'absolute',
-                top: '56px',
+                top: '52px', // Balanced for 48px height
                 left: 0,
                 backgroundColor: '#ffffff',
                 border: '1px solid #E5E7EB',
@@ -237,7 +237,7 @@ const PhoneInput = ({ value, onChange, selectedCountry, onCountryChange }) => {
         <div
           style={{
             width: '1px',
-            height: '24px',
+            height: '20px',
             backgroundColor: '#E5E7EB',
             flexShrink: 0,
           }}
@@ -254,7 +254,7 @@ const PhoneInput = ({ value, onChange, selectedCountry, onCountryChange }) => {
           onBlur={() => setFocused(false)}
           style={{
             fontFamily: 'Poppins, sans-serif',
-            fontSize: '15px',
+            fontSize: '15px', // Balanced for 48px height
             color: '#111827',
             border: 'none',
             outline: 'none',
